@@ -6,4 +6,7 @@ package hw;
  * @date 2024-12-3 09:22:18
  */
 public class Q12 {
+    public static void main(String[] args) {
+
+    }
 }
