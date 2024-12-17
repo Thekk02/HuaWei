@@ -1,5 +1,7 @@
 package EVolume;
 
+import java.util.Scanner;
+
 /**
  * @author kk
  * @description 不等式是否满足约束
@@ -7,6 +9,8 @@ package EVolume;
  */
 public class Q6 {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String[] strs = sc.nextLine().split(";");
 
     }
 }
