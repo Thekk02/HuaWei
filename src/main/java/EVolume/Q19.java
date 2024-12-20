@@ -11,13 +11,8 @@ import java.util.Scanner;
 public class Q19 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int[] arr = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-        int len = arr.length;
-        long diff = 0;
-        for(int i = 0;i < len;i++){
-            diff += (128 - arr[i]);
-        }
-
+        String str = sc.nextLine();
+        int[] nums = Arrays.stream(str.split(" ")).mapToInt(Integer::parseInt).toArray();
 
     }
 }

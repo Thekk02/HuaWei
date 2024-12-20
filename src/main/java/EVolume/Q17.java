@@ -12,16 +12,15 @@ public class Q17 {
         Scanner sc = new Scanner(System.in);
         String str = sc.nextLine();
         int count = 0;
-        int len = str.length();
-        for(int i = 0;i < len;i++){
-            if(str.charAt(i) == 'o'){
+        for(char ch : str.toCharArray()){
+            if(ch == 'o'){
                 count++;
             }
         }
         if(count % 2 == 0){
-            System.out.println(len);
+            System.out.println(str.length());
         }else{
-            System.out.println(len - 1);
+            System.out.println(str.length() - 1);
         }
     }
 }
