@@ -1,5 +1,8 @@
 package EVolume;
 
+import java.util.Scanner;
+import java.util.regex.PatternSyntaxException;
+
 /**
  * @author kk
  * @description 电脑病毒感染
