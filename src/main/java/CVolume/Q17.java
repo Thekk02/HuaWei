@@ -2,10 +2,10 @@ package CVolume;
 
 /**
  * @author kk
- * @description API集群负载统计
- * @date 2024-12-28 10:46:26
+ * @description 单词重量
+ * @date 2024-12-28 10:59:31
  */
-public class Q3 {
+public class Q17 {
     public static void main(String[] args) {
 
     }

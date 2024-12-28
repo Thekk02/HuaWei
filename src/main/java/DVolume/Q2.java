@@ -1,9 +1,9 @@
-package CVolume;
+package DVolume;
 
 /**
  * @author kk
- * @description ABR车路协同场景
- * @date 2024-12-28 10:35:47
+ * @description 剩余银饰的重量
+ * @date 2024-12-20 15:04:30
  */
 public class Q2 {
     public static void main(String[] args) {

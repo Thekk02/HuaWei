@@ -2,10 +2,10 @@ package CVolume;
 
 /**
  * @author kk
- * @description API集群负载统计
- * @date 2024-12-28 10:46:26
+ * @description 分割均衡字符串
+ * @date 2024-12-28 11:03:44
  */
-public class Q3 {
+public class Q23 {
     public static void main(String[] args) {
 
     }
