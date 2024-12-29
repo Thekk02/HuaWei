@@ -31,40 +31,37 @@ public class Q1 {
                 }
             }
         }
-        HashMap<Integer,Integer> connected = new HashMap<>();
+        HashMap<Integer,Integer> conn = new HashMap<>();
         for(int i = 0;i < n;i++){
             Integer fa = ufs.find(ufs.fa[i]);
-            connected.put(fa,connected.getOrDefault(fa,0) + 1);
+            conn.put(fa,conn.getOrDefault(fa,0) + 1);
         }
-        return connected.values().stream().max((a,b) -> a - b).get();
+        return conn.values().stream().max((a,b) -> a -b).get();
     }
 
 
 
     //并查集实现
     static class UnionFindSet{
-        int[] fa;
+        int[] fa ;
         int count;
 
-        public UnionFindSet(int n){
-            this.count = n;
+        public UnionFindSet(int n ){
             this.fa = new int[n];
-            for(int i = 0;i < n;i++){
-                this.fa[i] = 1;
-            }
+            this.count = n;
         }
         public int find(int x){
-            if(x != this.fa[x]){
-                return this.fa[x] = this.fa[this.fa[x]];
+            if(x != fa[x]){
+                return (this.fa[x] = this.find(fa[x]));
             }
             return x;
         }
         public void union(int x,int y){
-            int x_fa = this.find(x);
-            int y_fa = this.find(y);
-            if(x_fa != y_fa){
-                this.fa[y_fa] = x_fa;
-                this.count--;
+            int fa_x = this.find(x);
+            int fa_y = this.find(y);
+            if(fa_x != fa_y){
+                this.fa[fa_y] = fa_x;
+                count--;
             }
         }
 
