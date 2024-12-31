@@ -1,5 +1,8 @@
 package CVolume;
 
+import java.util.Arrays;
+import java.util.Scanner;
+
 /**
  * @author kk
  * @description 求幸存数之和

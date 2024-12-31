@@ -1,5 +1,7 @@
 package CVolume;
 
+import java.util.Scanner;
+
 /**
  * @author kk
  * @description 密码输入检测
@@ -7,6 +9,7 @@ package CVolume;
  */
 public class Q53 {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
     }
 }

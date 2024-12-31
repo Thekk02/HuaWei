@@ -1,5 +1,7 @@
 package CVolume;
 
+import java.util.Scanner;
+
 /**
  * @author kk
  * @description 分配土地
@@ -7,6 +9,7 @@ package CVolume;
  */
 public class Q24 {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
     }
 }

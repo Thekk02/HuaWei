@@ -1,5 +1,10 @@
 package CVolume;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Scanner;
+
 /**
  * @author kk
  * @description 数字涂色

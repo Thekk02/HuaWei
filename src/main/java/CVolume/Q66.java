@@ -1,5 +1,7 @@
 package CVolume;
 
+import java.util.Scanner;
+
 /**
  * @author kk
  * @description 求最多可以排除多少支团队
@@ -7,6 +9,7 @@ package CVolume;
  */
 public class Q66 {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
     }
 }

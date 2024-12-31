@@ -6,4 +6,7 @@ package CVolume;
  * @date 2024-12-28 15:04:58
  */
 public class Q75 {
+    public static void main(String[] args) {
+
+    }
 }

@@ -15,7 +15,6 @@ public class Q70 {
         int n = sc.nextInt();
         char[] chars = str.toCharArray();
         Arrays.sort(chars);
-        char target = chars[n - 1];
-        System.out.println(str.indexOf(target));
+        System.out.println(str.indexOf(chars[n - 1]));
     }
 }
