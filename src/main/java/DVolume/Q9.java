@@ -11,14 +11,15 @@ import java.util.Scanner;
 public class Q9 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println(helper(sc.nextLine()));
+        String s = sc.nextLine();
+        System.out.println(helper(s));
     }
     public static String helper(String s){
         char[] minArr = s.toCharArray();
         Arrays.sort(minArr);
         String minS = minArr.toString();
         if(minS.equals(s)){
-            return minS;
+            return s;
         }
         char[] sArr = s.toCharArray();
         for(int i = 0;i < s.length();i++){

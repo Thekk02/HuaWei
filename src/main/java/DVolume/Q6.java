@@ -11,33 +11,30 @@ public class Q6 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        int m = sc.nextInt();
-        int[] tasks = new int[m];
-        for(int i = 0;i < m;i++){
-            tasks[i] = sc.nextInt();
+        int len = sc.nextInt();
+        int[] nums = new int[len];
+        for(int i = 0;i < len;i++){
+            nums[i] = sc.nextInt();
         }
         int sheng = 0;
-        int ans = 0;
-        for(int i = 0;i < m;i++){
-            if(tasks[i] <= n){
-                if(sheng + tasks[i] <= n){
-                    sheng = 0;
-                    ans++;
-                }else{
-                    sheng = (sheng + tasks[i]) - n;
-                    ans ++;
-                }
+        int time = 0;
+        for(int i = 0; i< len;i++){
+            time++;
+            if(nums[i] + sheng <= n){
+                sheng = 0;
             }else{
-                sheng += (tasks[i] - n);
-                ans++;
+                sheng = (nums[i] + sheng - n);
             }
         }
-        if(sheng % m == 0){
-            ans += sheng / m;
-            System.out.println(ans);
-        }else{
-            ans += (sheng / m) + 1;
-            System.out.println(ans);
+        if(sheng == 0){
+            System.out.println(time);
+            return;
+        }else if(sheng < n){
+            time++;
         }
+        else{
+            time += (sheng / n) + 1;
+        }
+        System.out.println(time);
     }
 }

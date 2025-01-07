@@ -16,29 +16,19 @@ public class Q8 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int[] prices = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-        int n = prices.length;
-
-        int[] res = Arrays.copyOf(prices,n);
-        LinkedList<Integer> stack = new LinkedList<>();
-        for(int j = 0;j < n * 2;j++){
-            int prices_j = prices[j % n];
-            while(stack.size() > 0){
-                int i = stack.getLast();
-                if(prices[i] > prices_j){
-                    stack.removeLast();
-                    res[i] += prices_j;
-                }else{
+        int len = prices.length;
+        int[] nums = new int[len];
+        for(int i = 0;i <len;i++){
+            nums[i] = prices[i];
+            for(int j = i;j < 2 * len;j++){
+                if(prices[j % len] < prices[i]){
+                    nums[i] += prices[j % len];
                     break;
                 }
             }
-            if(j < n){
-                stack.add(j);
-            }
         }
-        StringJoiner sj = new StringJoiner(" ");
-        for(int num : res){
-            sj.add(num + "");
+        for(int num : nums){
+            System.out.print(num + " ");
         }
-        System.out.println(sj.toString());
     }
 }

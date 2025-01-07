@@ -15,10 +15,10 @@ public class Q78 {
         Scanner sc = new Scanner(System.in);
         s = sc.next();
         n = sc.nextInt();
-        System.out.println(helper());
+        System.out.println(helper(s,n));
     }
-    public static int helper(){
-        if(s.length() < n){
+    public static int helper(String s,int n){
+        if(s.length() < n || s.length() <=0 || s.length() > 30){
             return 0;
         }
         char[] cArr = s.toCharArray();
@@ -36,18 +36,19 @@ public class Q78 {
         }
         for(int i = 0;i < cArr.length;i++){
             if(used[i]){
-               continue;
+                continue;
             }
-            if(pre >= 0&& cArr[i] == cArr[pre]){
+            if(pre > 0 && cArr[i] == cArr[pre]){
                 continue;
             }
             if(i > 0 && cArr[i] == cArr[i - 1] && !used[i - 1]){
                 continue;
             }
             used[i] = true;
-            count = dfs(cArr,i,level + 1,used,count);
+            count = dfs(cArr,i,level+1,used,count);
             used[i] = false;
         }
         return count;
     }
+
 }

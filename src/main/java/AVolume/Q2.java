@@ -23,7 +23,4 @@ public class Q2 {
         System.out.println();
     }
 
-//    public static String getResult(){
-//        ArrayList<HashSet<Character>> num =
-//    }
 }

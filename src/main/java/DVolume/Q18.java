@@ -10,38 +10,44 @@ import java.util.Scanner;
 public class Q18 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int[] gems = new int[n];
+        int n = Integer.parseInt(sc.nextLine());
+        int[] nums = new int[n];
         for(int i = 0;i < n;i++){
-            gems[i] = sc.nextInt();
+            int num = Integer.parseInt(sc.nextLine());
+            nums[i] = num;
         }
-        int v = sc.nextInt();
+        int money = Integer.parseInt(sc.nextLine());
+
         int ans = 0;
         int l = 0;
         int r = 0;
-        int window_sum = 0;
+        int sum = 0;
         outer:
         while(r < n){
-            window_sum += gems[r];
-            if(window_sum <= v){
+            sum += nums[r];
+            if(sum <= money){
                 r++;
             }else{
                 ans = Math.max(ans,r - l);
                 while(l < r){
-                    window_sum -= gems[l++];
-                    if(window_sum <= v){
+                    sum -= nums[l++];
+                    if(sum <= money){
                         r++;
                         continue outer;
                     }
                 }
                 l = ++r;
-                window_sum = 0;
+                sum = 0;
             }
         }
-        if(window_sum <= v){
+        if(sum <= money){
             ans = Math.max(ans,r - l);
         }
         System.out.println(ans);
+
     }
+
+
+
 
 }

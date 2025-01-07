@@ -10,28 +10,26 @@ import java.util.Scanner;
  */
 public class Q7 {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int m = sc.nextInt();
-        String[] kemu = sc.nextLine().split(" ");
-        HashMap<String,int[]> students = new HashMap<>();
-        for(int i = 0;i < n;i++){
-            String name = sc.next();
-            int[] scores = new int[kemu.length];
-            for(int j = 0;j < scores.length;j++){
-                scores[i] = sc.nextInt();
-            }
-            students.put(name,scores);
-        }
-        String pai = sc.nextLine();
-        int index = -1;
-        for(int i = 0;i < kemu.length;i++){
-            if(kemu[i].equals(pai)){
-                index = i;
-            }
-        }
-        if(index < 0){
-
-        }
+//        Scanner sc = new Scanner(System.in);
+//        int n = sc.nextInt();
+//        int m = sc.nextInt();
+//        String[] kemu = sc.nextLine().split(" ");
+//        HashMap<String,int[]> students = new HashMap<>();
+//        for(int i = 0;i < n;i++){
+//            String name = sc.next();
+//            int[] scores = new int[m];
+//            for(int j = 0;j < m;j++){
+//                scores[j] = sc.nextInt();
+//            }
+//            students.put(name,scores);
+//        }
+//        String compare = sc.next();
+//        int index = -1;
+//        for(int i = 0;i < n;i++){
+//            if(kemu[i].equals(compare)){
+//                index = i;
+//            }
+//        }
+//        if(index)
     }
 }

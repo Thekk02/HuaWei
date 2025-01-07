@@ -4,6 +4,7 @@ import sun.plugin.net.protocol.jar.CachedJarURLConnection;
 
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.StringJoiner;
 
 /**
  * @author kk
@@ -17,35 +18,37 @@ public class Q12 {
         System.out.println(helper(s));
     }
     public static String helper(String s){
-        HashMap<Character,Integer> letter = new HashMap<>();
+        HashMap<Character,Integer> map = new HashMap<>();
         for(int i = 0;i < s.length();i++){
-            letter.put(s.charAt(i),letter.getOrDefault(s.charAt(i),0) + 1);
+            map.put(s.charAt(i),map.getOrDefault(s.charAt(i),0) + 1);
         }
-        StringBuilder sb = new StringBuilder();
-        letter.entrySet().stream().sorted(
-                (a,b) -> {
+        StringJoiner sj = new StringJoiner(";");
+        map.entrySet().stream().sorted( (a,b) ->
+                {
                     if(a.getValue() - b.getValue() != 0){
-                        return b.getValue() - a.getValue();
+                        return a.getValue() - b.getValue();
                     }else{
                         if((isLower(a.getKey()) && isLower(b.getKey())) || (isUpper(a.getKey()) && isUpper(b.getKey()))){
                             return a.getKey() - b.getKey();
                         }else{
                             if(isUpper(a.getKey())){
                                 return 1;
-                            }else{
+                            }
+                            else{
                                 return -1;
                             }
                         }
                     }
                 }
-        ).forEach(entry -> sb.append(entry.getKey() + ":" + entry.getValue() + ";"));
-        return sb.toString();
+                ).forEach(entry -> sj.add(entry.getKey() + "" + ":" + entry.getValue() + ""));
+        return sj.toString();
     }
 
-    public static boolean isLower(char letter){
-        return letter >= 'a' && letter <= 'z';
+    public static boolean isLower(Character ch){
+        return ch > 'a' && ch < 'z';
     }
-    public static boolean isUpper(char letter){
-        return letter >= 'A' && letter <= 'Z';
+    public static boolean isUpper(Character ch){
+        return ch > 'A' && ch < 'Z';
     }
+
 }

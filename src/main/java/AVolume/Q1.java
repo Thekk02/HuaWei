@@ -14,57 +14,58 @@ public class Q1 {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int[][] matrix = new int[n][n];
+        UnionFindSet ufs = new UnionFindSet(n);
         for(int i = 0;i < n;i++){
             for(int j = 0;j < n;j++){
                 matrix[i][j] = sc.nextInt();
             }
         }
-        System.out.println(getResult(matrix,n));
-
+        System.out.println(helper(matrix,n));
     }
-    public static int getResult(int[][] matrix, int n){
+    public static int helper(int[][] matrix,int n ){
         UnionFindSet ufs = new UnionFindSet(n);
         for(int i = 0;i < n;i++){
-            for(int j = i + 1;j < n;j++){
+            for(int j = 0;j < n;j++){
                 if(matrix[i][j] == 1){
-                    ufs.union(i,j);
+                    ufs.Union(i,j);
                 }
             }
         }
-        HashMap<Integer,Integer> conn = new HashMap<>();
+        HashMap<Integer,Integer> map = new HashMap<>();
         for(int i = 0;i < n;i++){
-            Integer fa = ufs.find(ufs.fa[i]);
-            conn.put(fa,conn.getOrDefault(fa,0) + 1);
+            Integer fa = ufs.Find(ufs.fa[i]);
+            map.put(fa,map.getOrDefault(fa,0) + 1);
         }
-        return conn.values().stream().max((a,b) -> a -b).get();
+        return map.values().stream().max((a,b) -> a-b).get();
     }
 
 
-
-    //并查集实现
     static class UnionFindSet{
-        int[] fa ;
+        int[] fa;
         int count;
-
-        public UnionFindSet(int n ){
-            this.fa = new int[n];
+        public  UnionFindSet(int n){
             this.count = n;
+            this.fa = new int[n];
+            for(int i = 0;i < n;i++){
+                fa[i] = i;
+            }
         }
-        public int find(int x){
-            if(x != fa[x]){
-                return (this.fa[x] = this.find(fa[x]));
+        public int Find(int x){
+            int x_fa = fa[x];
+            if(x_fa != x){
+                return this.fa[x] = this.Find(this.fa[x]);
             }
             return x;
         }
-        public void union(int x,int y){
-            int fa_x = this.find(x);
-            int fa_y = this.find(y);
-            if(fa_x != fa_y){
-                this.fa[fa_y] = fa_x;
-                count--;
+        public void Union(int x,int y){
+            int x_fa = Find(x);
+            int y_fa = Find(y);
+            if(x_fa != y_fa){
+             fa[x] = y_fa;
+             this.count--;
             }
         }
-
     }
+
 
 }

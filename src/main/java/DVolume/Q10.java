@@ -14,44 +14,41 @@ public class Q10 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int k = Integer.parseInt(sc.nextLine());
-        String s = sc.nextLine();
-        System.out.println(helper(k,s));
+        String[] strs = sc.nextLine().split("-");
+        System.out.println(helper(k,strs));
     }
-
-    public static String helper(int k,String s){
-        String[] arr = s.split("-");
+    public static String helper(int k,String[] strs){
         StringJoiner sj = new StringJoiner("-");
-        sj.add(arr[0]);
+        sj.add(strs[0]);
         StringBuilder sb = new StringBuilder();
-        for(int i = 1;i < arr.length;i++){
-            sb.append(arr[i]);
+        for(int i = 1;i < strs.length;i++){
+            sb.append(strs[i]);
         }
-        String newStr = sb.toString();
-        for(int i = 0;i < newStr.length();i++){
-            String subStr = newStr.substring(i,Math.min(i + k,newStr.length()));
-            sj.add(convert(subStr));
+        for(int i = 0;i < sb.length();i+= k){
+            String tmp = sb.substring(i,Math.min(i + k,sb.length()));
+            sj.add(convert(tmp));
         }
         return sj.toString();
     }
 
-
     public static String convert(String str){
-        int LowerConut = 0;
-        int UpperCount = 0;
-        for(int i = 0; i< str.length();i++){
-            char c = str.charAt(i);
-            if(c >= 'a' && c < 'z'){
-                LowerConut++;
-            }else if(c >= 'A' && c < 'Z'){
-                UpperCount++;
+        int low = 0;
+        int upper = 0;
+        for(int i = 0;i < str.length();i++){
+            char ch = str.charAt(i);
+            if(ch <= 'z' && ch >= 'a'){
+                low++;
+            }else if(ch >= 'A' && ch <= 'Z'){
+                upper++;
             }
         }
-        if(LowerConut > UpperCount){
+        if(low > upper){
             return str.toLowerCase();
-        }else if(LowerConut < UpperCount){
+        }else if (low < upper){
             return str.toUpperCase();
         }else{
             return str;
         }
     }
+
 }

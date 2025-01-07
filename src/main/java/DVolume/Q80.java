@@ -1,5 +1,7 @@
 package DVolume;
 
+import java.util.Scanner;
+
 /**
  * @author kk
  * @description 最小传输时延
@@ -7,6 +9,7 @@ package DVolume;
  */
 public class Q80 {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
     }
 }

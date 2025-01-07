@@ -13,33 +13,32 @@ public class Q13 {
         int m = Integer.parseInt(sc.nextLine());
         int[] nums = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
         int n = sc.nextInt();
-        System.out.println(helper(nums,n));
+        if(m < 2 * n){
+            System.out.println(-1);
+        }else{
+            System.out.println(helper(nums, n));
+        }
     }
     public static int helper(int[] nums,int n){
-        HashSet<Integer> set = new HashSet<>();
         ArrayList<Integer> list = new ArrayList<>();
-        for(int num : nums){
-            if(set.contains(num)){
-                break;
+        HashSet<Integer> set = new HashSet<>();
+        for(int i = 0;i < nums.length;i++){
+            if(set.contains(nums[i])){
+                continue;
             }else{
-                list.add(num);
-                set.add(num);
+                list.add(nums[i]);
+                set.add(nums[i]);
             }
         }
-        list.sort((a,b) -> a-b);
-        int ans = 0;
         if(list.size() < 2 * n){
             return -1;
-        }else{
-            int l = 0;
-            int r = list.size() - 1;
-            while(n > 0){
-                ans += (list.get(l) + list.get(r));
-                l++;
-                r--;
-                n--;
-            }
-            return ans;
         }
+        list.sort((a,b) -> a- b);
+        int ans = 0;
+        for(int i = 0;i < n;i++){
+            ans += list.get(i) + list.get(list.size() - 1 -i);
+        }
+        return ans;
     }
+
 }

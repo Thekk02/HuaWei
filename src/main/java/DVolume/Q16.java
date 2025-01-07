@@ -18,20 +18,23 @@ public class Q16 {
     public static int helper(String s){
         HashMap<Character,Character> map = new HashMap<>();
         map.put(')','(');
-        map.put(']','[');
         map.put('}','{');
+        map.put(']','[');
         LinkedList<Character> stack = new LinkedList<>();
-        int maxDepth = 0;
+        int ans = 0;
         for(int i = 0;i < s.length();i++){
             char c = s.charAt(i);
             if(stack.size() > 0 && map.get(c) == stack.getLast()){
                 stack.removeLast();
             }else{
                 stack.add(c);
-                maxDepth = Math.max(maxDepth,stack.size());
+                ans = Math.max(ans,stack.size());
             }
         }
-        if(stack.size() > 0) return 0;
-        return maxDepth;
+        if(stack.size() > 0){
+            return 0;
+        }
+        return ans;
     }
+
 }
