@@ -11,13 +11,14 @@ import java.util.Scanner;
 public class Q77 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int money = sc.nextInt();
+        int money = Integer.parseInt(sc.nextLine());
         int[] topupinfo = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
         int[] dp = new int[money + 1];
         for(int i = 0;i < topupinfo.length;i++){
             for(int j = i + 1;j <= money;j++){
-                dp[j] = Math.max(dp[j],dp[j - i + 1] + topupinfo[i]);
+                dp[j] = Math.max(dp[j],dp[j - (i + 1)] + topupinfo[i]);
             }
         }
+        System.out.println(dp[money]);
     }
 }

@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 /**
  * @author kk
- * @description 猜数字
+ * @description 猜数字(已拉黑)
  * @date 2024-12-5 10:00:16
  */
 public class Q2 {
@@ -20,7 +20,8 @@ public class Q2 {
             infos[i][0] = sc.next();
             infos[i][1] = sc.next();
         }
-        System.out.println();
+
     }
+
 
 }

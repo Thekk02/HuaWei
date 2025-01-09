@@ -6,4 +6,7 @@ package EVolume;
  * @date 2024-12-27 14:18:33
  */
 public class Q92 {
+    public static void main(String[] args) {
+
+    }
 }

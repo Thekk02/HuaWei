@@ -10,28 +10,24 @@ import java.util.*;
 public class Q70 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        HashMap<String,Queue<String>> tree = new HashMap<>();
         int n = sc.nextInt();
-        HashMap<String, HashSet<String>> tree = new HashMap<>();
         for(int i = 0;i < n;i++){
-            String childNode = sc.next();
-            String parentNode = sc.next();
-            tree.computeIfAbsent(parentNode,k -> new HashSet<>()).add(childNode);
+            String ch = sc.next();
+            String fa = sc.next();
+            tree.putIfAbsent(fa,new LinkedList<>());
+            tree.get(fa).offer(ch);
         }
-        String targetNode = sc.nextLine();
-        if(!tree.containsKey(targetNode)){
-            System.out.println(" ");
-            return;
-        }
-        LinkedList<String> queue = new LinkedList<>(tree.get(targetNode));
-        ArrayList<String> result = new ArrayList<>();
-        while(!queue.isEmpty()){
-            String node = queue.removeFirst();
-            result.add(node);
-            if(tree.containsKey(node)){
-                queue.addAll(tree.get(node));
+        String target = sc.next();
+        List<String> ans = new LinkedList<>();
+        Queue<String> chs = tree.get(target);
+        while(!chs.isEmpty()){
+            String ch = chs.poll();
+            ans.add(ch);
+            if(tree.containsKey(ch)){
+                chs.addAll(tree.get(ch));
             }
         }
-        result.sort(String::compareTo);
-        result.forEach(System.out::println);
+        ans.forEach(ele -> System.out.println(ele));
     }
 }

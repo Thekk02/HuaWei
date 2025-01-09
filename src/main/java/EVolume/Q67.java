@@ -14,29 +14,27 @@ public class Q67 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        List<List<Integer>> task = new ArrayList<>();
+        List<List<Integer>> infos = new ArrayList<>();
         for(int i = 0;i < n;i++){
-            int starttime = sc.nextInt();
-            int endtime = starttime + sc.nextInt();
-            List<Integer> list = new ArrayList<>();
-            list.add(starttime);
-            list.add(endtime);
-            task.add(list);
+            int startTime = sc.nextInt();
+            int endTime = sc.nextInt() + startTime;
+            ArrayList<Integer> info = new ArrayList<>();
+            info.add(startTime);
+            info.add(endTime);
+            infos.add(info);
         }
-        //按照结束时间排序
-        task.sort(Comparator.comparingInt(a -> a.get(1)));
-        //获取第一个演出的结束时间和初始化观看的演出场数
-        int firstEndTime = task.get(0).get(1);
-        int numShows = 1;
-
-        for(List<Integer> list : task){
-            int starttime = list.get(0);
-            int endTime = list.get(1);
-            if(starttime - firstEndTime >= 15){
-                numShows++;
+        infos.sort(Comparator.comparingInt(a -> a.get(1)));
+        //第一个开始的时间
+        int firstEndTime = infos.get(0).get(1);
+        int ans = 1;
+        for(List<Integer> info : infos){
+            int satrtTime = info.get(0);
+            int endTime = info.get(1);
+            if(satrtTime - firstEndTime >= 15){
+                ans++;
                 firstEndTime = endTime;
             }
         }
-        System.out.println(numShows);
+        System.out.println(ans);
     }
 }

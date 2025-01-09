@@ -11,22 +11,19 @@ public class Q76 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         char c = sc.nextLine().charAt(0);
-        String str =sc.nextLine();
-        Map<Character, List<Integer>> charIndexMap = new HashMap<>();
+        String str = sc.nextLine();
+        Map<Character,List<Integer>> charIndexMap = new HashMap<>();
         int left = 0,right = 0;
         int maxLength = 0;
         while(right < str.length()){
-            char currrentchar = str.charAt(right);
-            if(c == currrentchar){
-                if(right > left){
-                    maxLength = Math.max(maxLength,right - left);
-                }
+            char cur = str.charAt(right);
+            if(c == cur){
+                maxLength = Math.max(maxLength,right - left);
                 right++;
                 left = right;
-            }
-            else{
-                charIndexMap.computeIfAbsent(currrentchar,k -> new ArrayList<>());
-                List<Integer> charIndexs = charIndexMap.get(currrentchar);
+            }else{
+                charIndexMap.computeIfAbsent(cur,k -> new ArrayList<>());
+                List<Integer> charIndexs = charIndexMap.get(cur);
                 if(charIndexs.size() == 2){
                     maxLength = Math.max(maxLength,right - left);
                     left = charIndexs.get(0) + 1;

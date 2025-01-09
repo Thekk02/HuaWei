@@ -1,6 +1,6 @@
 package EVolume;
 
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * @author kk
@@ -11,29 +11,27 @@ public class Q71 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         while(sc.hasNextLine()){
-            String[] input = sc.nextLine().split(" ");
-            int n = Integer.parseInt(input[0]);
-            int m = Integer.parseInt(input[1]);
-            int[] nums = new int[n];
-
-            for(int i = 0;i < n;i++){
-                nums[i] = sc.nextInt();
-            }
-
-            boolean[] remainderExists = new boolean[m];
-            int sum = 0;
-            boolean found = false;
-            for(int num : nums){
-                sum += num;
-                int remiander = sum % m;
-                if(remainderExists[remiander]){
-                    found = true;
+            int[] line1 = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+            int n = line1[0];
+            int m = line1[1];
+            int[] nums = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+            Queue<Integer> stack = new LinkedList<>();
+            HashSet<Integer> set = new HashSet<>();
+            stack.offer(nums[0]);
+            set.add((nums[0] % m));
+            for(int i = 1;i < n;i++){
+                int num = stack.peek() + nums[i];
+                if(set.contains(m % num)){
+                    System.out.println(1);
                     break;
                 }else{
-                    remainderExists[remiander] = true;
+                    stack.offer(num);
+                    set.add(num % m);
                 }
             }
-            System.out.println(found ? 1 : 0);
+            if(set.size() == n){
+                System.out.println(-1);
+            }
         }
     }
 }

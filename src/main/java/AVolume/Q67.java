@@ -15,7 +15,7 @@ public class Q67 {
         int n = Integer.parseInt(sc.nextLine());
         int[] nums = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
         int p_max = sc.nextInt();
-        System.out.println(helper());
+//        System.out.println(helper());
     }
 
 

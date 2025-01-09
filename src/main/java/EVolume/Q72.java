@@ -1,5 +1,6 @@
 package EVolume;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -8,7 +9,7 @@ import java.util.Scanner;
  * @date 2024-12-27 10:04:37
  */
 public class Q72 {
-    static int n,m;
+    static  int n,m;
     static int[][] book;
     static int[][] directions = {{0,1},{0,-1},{1,0},{-1,0}};
     static String minPath = "";
@@ -16,14 +17,11 @@ public class Q72 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         n = sc.nextInt();
-        int[] data = new int[n];
-        for(int i = 0;i < n;i++){
-            data[i] = sc.nextInt();
-        }
-        m = sc.nextInt();
+        int[] data = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+        m = Integer.parseInt(sc.nextLine());
         book = new int[m][m];
         for(int i = 0;i < m;i++){
-            for(int j =0;j < m;j++){
+            for(int j = 0;j < m;j++){
                 book[i][j] = sc.nextInt();
             }
         }
@@ -37,7 +35,7 @@ public class Q72 {
         }
         System.out.println(found ? minPath.trim() : "error");
     }
-    public static void dfs(int[] data,int index,int x,int y,boolean[][] visited,String path){
+    public static void dfs(int[] data,int index,int x,int y ,boolean[][] visited,String path){
         if(index == n){
             if(!found || path.compareTo(minPath) < 0){
                 minPath = path;
@@ -53,11 +51,13 @@ public class Q72 {
         if(index == n - 1 || book[x][y] == data[index]){
             dfs(data,index + 1,x,y,visited,newPath);
         }
-        for(int[] dirction : directions){
-            int newX = x + dirction[0];
-            int newY = y + dirction[1];
+        for(int[] dir:directions){
+            int newX = x + dir[0];
+            int newY = y + dir[1];
             dfs(data,index + 1,newX,newY,visited,newPath);
         }
         visited[x][y] = false;
     }
+
+
 }
